@@ -6,7 +6,7 @@
 /*   By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 18:50:12 by moel-asr          #+#    #+#             */
-/*   Updated: 2022/12/10 01:35:46 by moel-asr         ###   ########.fr       */
+/*   Updated: 2022/12/10 02:46:53 by moel-asr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	main(int argc, char **argv, char **envp)
 	if (pipe(var.fd) < 0)
 		print_errors(6);
 	check_infile(argc, argv);
-	var.paths = check_cmd_path(argv, envp);
+	var.paths = check_cmd_path(envp);
 	var.cmd1 = ft_split(argv[2], ' ');
 	var.cmd2 = ft_split(argv[3], ' ');
-	var.cmd1_path = check_cmd2(argv, envp, var.cmd1[0]);
-	var.cmd2_path = check_cmd2(argv, envp, var.cmd2[0]);
+	var.cmd1_path = check_cmd2(envp, var.cmd1[0]);
+	var.cmd2_path = check_cmd2(envp, var.cmd2[0]);
 	var.pid1 = fork();
 	if (var.pid1 < 0)
 		print_errors(7);

@@ -6,13 +6,13 @@
 #    By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 20:38:40 by moel-asr          #+#    #+#              #
-#    Updated: 2022/12/10 01:36:21 by moel-asr         ###   ########.fr        #
+#    Updated: 2022/12/10 02:45:02 by moel-asr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-CFLAGS = # -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = pipex_utils/ft_putchar.c \
 	pipex_utils/ft_memcpy.c \

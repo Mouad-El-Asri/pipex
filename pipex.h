@@ -6,7 +6,7 @@
 /*   By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:39:03 by moel-asr          #+#    #+#             */
-/*   Updated: 2022/12/10 01:36:45 by moel-asr         ###   ########.fr       */
+/*   Updated: 2022/12/10 02:46:45 by moel-asr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ size_t	ft_strlen(const char *str);
 char	*ft_strstr(const char *str, const char *to_find);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	check_infile(int argc, char **argv);
-char	**check_cmd_path(char **argv, char **envp);
+char	**check_cmd_path(char **envp);
 void	ft_free(char **strs);
 char	*check_cmd1(char **paths, char *cmd, char *cmd_path0, char *cmd_path);
-char	*check_cmd2(char **argv, char **envp, char *cmd);
+char	*check_cmd2(char **envp, char *cmd);
 void	execute_cmd(t_pars *var, char **envp, char *argv1, char *argv2);
 void	print_errors(int num);
 
