@@ -6,7 +6,7 @@
 #    By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 20:38:40 by moel-asr          #+#    #+#              #
-#    Updated: 2022/12/05 03:36:29 by moel-asr         ###   ########.fr        #
+#    Updated: 2022/12/10 01:36:21 by moel-asr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = pipex_utils/ft_putchar.c \
 	pipex_utils/ft_substr.c \
 	check_errors.c \
 	print_errors.c \
+	execute_cmd.c \
 	main.c
 
 OBJS = $(SRCS:.c=.o)
@@ -42,8 +43,5 @@ fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
-
-run :
-	@./$(NAME)
 
 .PHONY : clean fclean bonus

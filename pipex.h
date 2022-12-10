@@ -6,7 +6,7 @@
 /*   By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 20:39:03 by moel-asr          #+#    #+#             */
-/*   Updated: 2022/12/05 03:36:51 by moel-asr         ###   ########.fr       */
+/*   Updated: 2022/12/10 01:36:45 by moel-asr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@
 # include <string.h>
 # include <sys/wait.h>
 
+typedef struct s_pars
+{
+	char	**paths;
+	int		fd[2];
+	int		outfile_fd;
+	int		infile_fd;
+	int		pid1;
+	int		pid2;
+	char	**cmd1;
+	char	**cmd2;
+	char	*cmd1_path;
+	char	*cmd2_path;
+}	t_pars;
+
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t len);
 void	ft_putchar(char c);
@@ -30,9 +44,12 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
 char	*ft_strstr(const char *str, const char *to_find);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	print_errors(int num);
-void	check_files_errors(int argc, char **argv);
+void	check_infile(int argc, char **argv);
 char	**check_cmd_path(char **argv, char **envp);
-void	check_cmd_path2(char **argv, char **envp);
+void	ft_free(char **strs);
+char	*check_cmd1(char **paths, char *cmd, char *cmd_path0, char *cmd_path);
+char	*check_cmd2(char **argv, char **envp, char *cmd);
+void	execute_cmd(t_pars *var, char **envp, char *argv1, char *argv2);
+void	print_errors(int num);
 
 #endif
