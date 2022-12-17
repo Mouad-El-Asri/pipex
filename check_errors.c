@@ -6,7 +6,7 @@
 /*   By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:22:59 by moel-asr          #+#    #+#             */
-/*   Updated: 2022/12/10 02:46:34 by moel-asr         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:35:12 by moel-asr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ char	**check_cmd_path(char **envp)
 	p = NULL;
 	if (!*envp)
 		print_errors(3);
-	while (envp[i++])
+	while (envp[i])
 	{
 		if (ft_strstr(envp[i], "PATH="))
 		{
 			p = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 5);
 			break ;
 		}
+		i++;
 	}
 	if (!p)
 		print_errors(4);
@@ -62,31 +63,25 @@ void	ft_free(char **strs)
 
 char	*check_cmd1(char **paths, char *cmd, char *cmd_path0, char *cmd_path)
 {
-	int	count;
 	int	i;
 
-	count = 0;
 	i = 0;
-	while (paths[i++])
+	while (paths[i])
 	{
-		free(cmd_path0);
 		cmd_path0 = ft_strjoin("/", cmd);
-		free(cmd_path);
 		cmd_path = ft_strjoin(paths[i], cmd_path0);
+		free(cmd_path0);
 		if ((access(cmd_path, F_OK) == 0))
 		{
-			count++;
-			break ;
+			ft_free(paths);
+			return (cmd_path);
 		}
-	}
-	free(cmd_path0);
-	ft_free(paths);
-	if (!count)
-	{
 		free(cmd_path);
-		print_errors(5);
+		i++;
 	}
-	return (cmd_path);
+	ft_free(paths);
+	print_errors(5);
+	return (NULL);
 }
 
 char	*check_cmd2(char **envp, char *cmd)
